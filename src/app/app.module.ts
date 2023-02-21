@@ -17,6 +17,13 @@ import { FormularioJugadorComponent } from './futbol/formulario-jugador/formular
 import { RegistroFormularioComponent } from './registro-formulario/registro-formulario.component';
 import { IniciosesionFormularioComponent } from './iniciosesion-formulario/iniciosesion-formulario.component';
 import { VerificacionCuentaComponent } from './verificacion-cuenta/verificacion-cuenta.component';
+import { MateriaTablasComponent } from './escuela/tablas/materia-tablas/materia-tablas.component';
+import { MateriaformComponent } from './escuela/forms/materiaform/materiaform.component';
+import { ProfesorTablaComponent } from './escuela/tablas/profesor-tabla/profesor-tabla.component';
+import { ProfesorformComponent } from './escuela/forms/profesorform/profesorform.component';
+import { AlumnoTablaComponent } from './escuela/tablas/alumno-tabla/alumno-tabla.component';
+import { AlumnoformComponent } from './escuela/forms/alumnoform/alumnoform.component';
+import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/cuatrimestre-tabla.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +39,15 @@ import { VerificacionCuentaComponent } from './verificacion-cuenta/verificacion-
     FormularioJugadorComponent,
     RegistroFormularioComponent,
     IniciosesionFormularioComponent,
-    VerificacionCuentaComponent
+    VerificacionCuentaComponent,
+    MateriaTablasComponent,
+    MateriaformComponent,
+    ProfesorTablaComponent,
+    ProfesorformComponent,
+    AlumnoTablaComponent,
+    AlumnoformComponent,
+    CuatrimestreTablaComponent,
+    CuatrimestreTablaComponent
   ],
   imports: [
     BrowserModule,

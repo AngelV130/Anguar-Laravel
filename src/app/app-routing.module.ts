@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MateriaformComponent } from './escuela/forms/materiaform/materiaform.component';
+import { AlumnoTablaComponent } from './escuela/tablas/alumno-tabla/alumno-tabla.component';
+import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/cuatrimestre-tabla.component';
+import { MateriaTablasComponent } from './escuela/tablas/materia-tablas/materia-tablas.component';
+import { ProfesorTablaComponent } from './escuela/tablas/profesor-tabla/profesor-tabla.component';
 import { FormularioEquipoComponent } from './futbol/formulario-equipo/formulario-equipo.component';
 import { FormularioJugadorComponent } from './futbol/formulario-jugador/formulario-jugador.component';
 import { FormularioLigaComponent } from './futbol/formulario-liga/formulario-liga.component';
@@ -25,7 +30,12 @@ const routes: Routes = [
   {path: 'jugadores/formulario',component:FormularioJugadorComponent},
   {path: 'jugadores/formulario/:id',component:FormularioJugadorComponent},
   {path: 'logging', component:IniciosesionFormularioComponent},
-  {path: 'registro', component:RegistroFormularioComponent}
+  {path: 'registro', component:RegistroFormularioComponent},
+  {path:'materias',component:MateriaTablasComponent},
+  {path:'materias/agregar',component:MateriaformComponent},
+  {path:'profesores',component:ProfesorTablaComponent},
+  {path:'cuatrimestres',component:CuatrimestreTablaComponent},
+  {path:'alumnos',component:AlumnoTablaComponent}
 ]
 
 @NgModule({
