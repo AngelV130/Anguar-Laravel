@@ -1,0 +1,18 @@
+<div class="container col-8 shadow-lg p-3 mb-5 bg-body rounded">
+    <h3 class="d-flex justify-content-center">Ligas</h3>
+    <form [formGroup]="form" (submit)="(insertarLiga())">
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Nombre:</label>
+          <input type="text" class="form-control" id="email" 
+          placeholder="Escribe el nombre" formControlName="nombre" >
+        </div>
+        <div class="mb-3">
+          <label for="pwd" class="form-label">Pais:</label>
+          <select class="form-select" aria-label="multiple select example" formControlName="pais">
+            <option value="" disabled>Seleccione un opcion</option>
+            <option  *ngFor="let pais of PAISES" value="{{ pais.id }}">{{ pais.nombre }}</option>
+          </select>
+        </div><br>
+        <button [disabled]="form.get('nombre')?.errors?.['required'] || form.get('pais')?.errors?.['required']" type="submit" class="btn btn-primary">Guardar</button>
+      </form>
+</div>

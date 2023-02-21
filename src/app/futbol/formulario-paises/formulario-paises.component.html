@@ -1,0 +1,17 @@
+<form class="row g-3" [formGroup]="form">
+    <div class="col-auto">
+      <label for="inputPassword2" class="visually-hidden">Nombre del Pais</label>
+      <input formControlName="nombre" type="text" class="form-control" id="inputPassword2" 
+      placeholder="Nombre del Pais" required value="{{ pais.nombre }}">
+      <div class="" *ngIf="form.get('nombre')?.errors?.['serverError']">
+        {{ form.get('nombre')?.errors?.['serverError'] }}
+      </div>
+      <div class="" *ngIf="!form.get('nombre')?.errors?.['required']">
+        campo requerido
+      </div>
+    </div>
+    <div class="col-auto">
+      <button *ngIf="form.value.nombre == null" class="btn btn-primary mb-3" (click)="insertarPais()">Guardar</button>
+      <button *ngIf="form.value.nombre != null" class="btn btn-primary mb-3" (click)="actualizarPais()">Actualizar</button>
+    </div>
+</form>
