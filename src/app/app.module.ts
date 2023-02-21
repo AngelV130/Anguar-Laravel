@@ -14,6 +14,9 @@ import { TablaJugadorComponent } from './futbol/tabla-jugador/tabla-jugador.comp
 import { FormularioLigaComponent } from './futbol/formulario-liga/formulario-liga.component';
 import { FormularioEquipoComponent } from './futbol/formulario-equipo/formulario-equipo.component';
 import { FormularioJugadorComponent } from './futbol/formulario-jugador/formulario-jugador.component';
+import { RegistroFormularioComponent } from './registro-formulario/registro-formulario.component';
+import { IniciosesionFormularioComponent } from './iniciosesion-formulario/iniciosesion-formulario.component';
+import { VerificacionCuentaComponent } from './verificacion-cuenta/verificacion-cuenta.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { FormularioJugadorComponent } from './futbol/formulario-jugador/formular
     TablaJugadorComponent,
     FormularioLigaComponent,
     FormularioEquipoComponent,
-    FormularioJugadorComponent
+    FormularioJugadorComponent,
+    RegistroFormularioComponent,
+    IniciosesionFormularioComponent,
+    VerificacionCuentaComponent
   ],
   imports: [
     BrowserModule,

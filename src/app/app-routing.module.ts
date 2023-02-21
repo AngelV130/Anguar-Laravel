@@ -8,6 +8,8 @@ import { TablaEquipoComponent } from './futbol/tabla-equipo/tabla-equipo.compone
 import { TablaJugadorComponent } from './futbol/tabla-jugador/tabla-jugador.component';
 import { TablaLigaComponent } from './futbol/tabla-liga/tabla-liga.component';
 import { TablaPaisesComponent } from './futbol/tabla-paises/tabla-paises.component';
+import { IniciosesionFormularioComponent } from './iniciosesion-formulario/iniciosesion-formulario.component';
+import { RegistroFormularioComponent } from './registro-formulario/registro-formulario.component';
 
 const routes: Routes = [
   {path: 'paises', component:TablaPaisesComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path: 'equipos/formulario/:id',component:FormularioEquipoComponent},
   {path: 'jugadores',component:TablaJugadorComponent},
   {path: 'jugadores/formulario',component:FormularioJugadorComponent},
-  {path: 'jugadores/formulario/:id',component:FormularioJugadorComponent}
+  {path: 'jugadores/formulario/:id',component:FormularioJugadorComponent},
+  {path: 'logging', component:IniciosesionFormularioComponent},
+  {path: 'registro', component:RegistroFormularioComponent}
 ]
 
 @NgModule({

@@ -1,0 +1,19 @@
+<div class="container col-8 shadow-lg p-3 mb-5 bg-body rounded">
+    <h3 class="d-flex justify-content-center">Iniciar Sesion</h3>
+    <form [formGroup]="form" (submit)="(mandarDatos())">
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Correo Electronico:</label>
+          <input type="email" class="form-control" id="email" 
+          placeholder="Escribe el correo" formControlName="email" >
+          <p *ngIf="this.form.get('email')?.errors?.['serverError']">{{ this.form.get('email')?.errors?.['serverError'] }}</p>
+        </div>
+        <div class="mb-3">
+          <label for="pwd" class="form-label">Contraseña:</label>
+          <input type="password" class="form-control" id="pwd" 
+          placeholder="Escribe tu contraseña" formControlName="password" minlength="8">
+            <p *ngIf="this.form.get('password')?.errors?.['serverError']">{{ this.form.get('password')?.errors?.['serverError'] }}</p>
+        </div><br>
+        <button [disabled]="form.get('email')?.errors?.['required'] || form.get('password')?.errors?.['minlength']
+                        || form.get('password')?.errors?.['required']" type="submit" class="btn btn-primary">Guardar</button>
+      </form>
+</div>
