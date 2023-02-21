@@ -1,0 +1,23 @@
+<div class="container">
+    <h1 class="text-center mb-3">form Materia</h1>
+    <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
+        <div class="form-floating mb-3">
+            <input type="text" formControlName="nombre"  class="form-control" id="floatingInput" placeholder="nombre">
+            <label for="floatingInput">Nombre</label>
+        </div>
+        <p *ngIf="form.get('nombre')?.invalid" class="">El nombre es obligatorio</p>
+        <div class="form-floating mb-3">
+            <input type="text" formControlName="unidad" class="form-control" id="floatingInput" placeholder="appaterno">
+            <label for="floatingInput">unidades</label>
+        </div>
+        <p *ngIf="form.get('unidad')?.invalid" class="">La unidad es obligatorio</p>
+        <button *ngIf="!form.invalid" [disabled]="form.invalid" type="submit" class="btn btn-outline-success">Guardar</button>
+        <button
+        *ngIf="form.invalid"
+        type="submit"
+        class="btn btn-outline-secundary"
+        [disabled]="form.invalid">
+        Completa los campos
+        </button>
+    </form>
+</div>

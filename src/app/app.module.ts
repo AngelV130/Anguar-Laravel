@@ -14,6 +14,13 @@ import { TablaJugadorComponent } from './futbol/tabla-jugador/tabla-jugador.comp
 import { FormularioLigaComponent } from './futbol/formulario-liga/formulario-liga.component';
 import { FormularioEquipoComponent } from './futbol/formulario-equipo/formulario-equipo.component';
 import { FormularioJugadorComponent } from './futbol/formulario-jugador/formulario-jugador.component';
+import { MateriaTablasComponent } from './escuela/tablas/materia-tablas/materia-tablas.component';
+import { MateriaformComponent } from './escuela/forms/materiaform/materiaform.component';
+import { ProfesorTablaComponent } from './escuela/tablas/profesor-tabla/profesor-tabla.component';
+import { ProfesorformComponent } from './escuela/forms/profesorform/profesorform.component';
+import { AlumnoTablaComponent } from './escuela/tablas/alumno-tabla/alumno-tabla.component';
+import { AlumnoformComponent } from './escuela/forms/alumnoform/alumnoform.component';
+import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/cuatrimestre-tabla.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,15 @@ import { FormularioJugadorComponent } from './futbol/formulario-jugador/formular
     TablaJugadorComponent,
     FormularioLigaComponent,
     FormularioEquipoComponent,
-    FormularioJugadorComponent
+    FormularioJugadorComponent,
+    MateriaTablasComponent,
+    MateriaformComponent,
+    ProfesorTablaComponent,
+    ProfesorformComponent,
+    AlumnoTablaComponent,
+    AlumnoformComponent,
+    CuatrimestreTablaComponent,
+    CuatrimestreTablaComponent
   ],
   imports: [
     BrowserModule,
