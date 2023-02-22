@@ -24,6 +24,7 @@ import { ProfesorformComponent } from './escuela/forms/profesorform/profesorform
 import { AlumnoTablaComponent } from './escuela/tablas/alumno-tabla/alumno-tabla.component';
 import { AlumnoformComponent } from './escuela/forms/alumnoform/alumnoform.component';
 import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/cuatrimestre-tabla.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

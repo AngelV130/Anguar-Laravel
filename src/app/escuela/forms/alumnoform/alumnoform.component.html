@@ -1,32 +1,33 @@
 
 <div class="container">
     <h1 class="text-center mb-3">form alumno</h1>
-    <form action="">
+    <form [formGroup]="form" (submit)="(insertarAlumno())">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="nombre">
+            <input formControlName="nombre" type="text" class="form-control" id="floatingInput" placeholder="nombre">
             <label for="floatingInput">Nombre</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="appaterno">
+            <input formControlName="ap_paterno" type="text" class="form-control" id="floatingInput" placeholder="appaterno">
             <label for="floatingInput">Apellido Paterno</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="apmaterno">
+            <input formControlName="ap_materno" type="text" class="form-control" id="floatingInput" placeholder="apmaterno">
             <label for="floatingInput" class="">Apellido Materno</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="nombre">
+            <input formControlName="correo" type="text" class="form-control" id="floatingInput" placeholder="nombre">
             <label for="floatingInput">Correo</label>
         </div>
         <div class="form-floating mb-3">
-            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-              <option selected>Seleccioner un Cuatrimestre</option>
-              <option value="1">Uno</option>
-              <option value="2">Dos</option>
-              <option value="3">Tres</option>
+            <select formControlName="cuatri_id" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                <option selected>Seleccioner un Cuatrimestre</option>
+                <option *ngFor="let cuatri as CUATRIMESTRES" value="{{cuatri.id}}">{{cuatri.num_cuatri}}</option>
             </select>
             <label for="floatingSelect">Cuatrimestre</label>
         </div>
-        <button type="submit" class="btn btn-outline-success">Guardar</button>
-    </form>
+        <button [disabled]="form.get('nombre')?.errors?.['required'] || form.get('cuatri_id')?.errors?.['required']
+        || form.get('ap_paterno')?.errors?.['required'] || form.get('ap_materno')?.errors?.['required']
+        || form.get('correo')?.errors?.['required']"
+        type="submit" class="btn btn-primary">Guardar</button>    
+    x</form>
 </div>

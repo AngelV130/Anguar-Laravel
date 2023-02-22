@@ -12,16 +12,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>jose</td>
-                <td>carrera soto</td>
-                <td>carrerasoto@gmail.com</td>
-                <td>5</td>
-                <td><a routerLink="./agregar"  class="btn btn-outline-warning me-3">Modificar</a> 
-                    <button class="btn btn-outline-danger">Eliminar</button>
+            <tr *ngFor="let alumno of ALUMNOS">
+                <td>{{alumno.id}}</td>
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.ap_paterno}} {{alumno.ap_materno}}</td>
+                <td>{{alumno.correo}}</td>
+                <td>{{alumno.cuatri_id}}</td>
+                <td><a routerLink="./actualizar/{{alumno.id}}" class="btn btn-outline-warning me-3">Modificar</a> 
+                    <button (click)="eliminarAlumno(alumno.id)" class="btn btn-outline-danger">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <button routerLink="./agregar" class="btn btn-outline-success">Agregar Alumno</button>
 </div>

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { materias } from 'src/app/models/escuela/materias';
 import { MateriaService } from 'src/app/services/escuela/materia.service';
-import { OnInit } from '@angular/core';
 
 
 @Component({
@@ -10,18 +8,27 @@ import { OnInit } from '@angular/core';
   templateUrl: './materia-tablas.component.html',
   styleUrls: ['./materia-tablas.component.css']
 })
-export class MateriaTablasComponent implements OnInit {
-  materias: materias[] = [];
-  subcription?:Subscription;
-
-  constructor(private materiaService:MateriaService){}
-  ngOnInit():void{
-    this.getMaterias();
-    this.subcription=this.materiaService.get_refresh$().subscribe(()=>{
-      this.getMaterias();
+export class MateriaTablasComponent{
+  MATERIAS:materias[]=[]
+  columnas=[
+    {titulo:"Id"},
+    {titulo:"Nombre"},
+    {titulo:"Unidades"}
+  ]
+  constructor(private materiaSVC:MateriaService){}
+  ngOnInit(): void {
+    this.obtenerMaterias();
+  }
+  obtenerMaterias() {
+    this.materiaSVC.obtenerMaterias().subscribe(res=>{
+      this.MATERIAS=res
     })
   }
-  getMaterias() {
-    this.materiaService.getMaterias().subscribe(data=>this.materias=data);
+  eliminarMateria(id:number){
+    this.materiaSVC.eliminarMateria(id).subscribe(res=>{
+      this.obtenerMaterias();
+      console.log("se elimino");
+      console.log(res);
+    })
   }
 }

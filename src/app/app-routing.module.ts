@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AlumnoformComponent } from './escuela/forms/alumnoform/alumnoform.component';
+import { CuatrimestreformComponent } from './escuela/forms/cuatrimestreform/cuatrimestreform.component';
 import { MateriaformComponent } from './escuela/forms/materiaform/materiaform.component';
+import { ProfesorformComponent } from './escuela/forms/profesorform/profesorform.component';
 import { AlumnoTablaComponent } from './escuela/tablas/alumno-tabla/alumno-tabla.component';
 import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/cuatrimestre-tabla.component';
 import { MateriaTablasComponent } from './escuela/tablas/materia-tablas/materia-tablas.component';
@@ -33,9 +36,16 @@ const routes: Routes = [
   {path: 'registro', component:RegistroFormularioComponent},
   {path:'materias',component:MateriaTablasComponent},
   {path:'materias/agregar',component:MateriaformComponent},
+  {path:'materias/actualizar/:id',component:MateriaformComponent},
   {path:'profesores',component:ProfesorTablaComponent},
+  {path:'profesores/agregar',component:ProfesorformComponent},
+  {path:'profesores/actualizar/:id',component:ProfesorformComponent},
   {path:'cuatrimestres',component:CuatrimestreTablaComponent},
-  {path:'alumnos',component:AlumnoTablaComponent}
+  {path:'cuatrimestres/agregar',component:CuatrimestreformComponent},
+  {path:'cuatrimestre/actualizar/:id',component:CuatrimestreformComponent},
+  {path:'alumnos',component:AlumnoTablaComponent},
+  {path:'alumnos/agregar',component:AlumnoformComponent},
+  {path:'alumnos/actualizar/:id',component:AlumnoformComponent}
 ]
 
 @NgModule({
