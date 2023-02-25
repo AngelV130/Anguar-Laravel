@@ -4,5 +4,5 @@ export interface Profesor{
     ap_paterno: String,
     ap_materno: String,
     correo:string,
-    materia:number | string
+    materia_id:number|string
 }

@@ -42,7 +42,7 @@ const routes: Routes = [
   {path:'profesores/actualizar/:id',component:ProfesorformComponent},
   {path:'cuatrimestres',component:CuatrimestreTablaComponent},
   {path:'cuatrimestres/agregar',component:CuatrimestreformComponent},
-  {path:'cuatrimestre/actualizar/:id',component:CuatrimestreformComponent},
+  {path:'cuatrimestres/actualizar/:id',component:CuatrimestreformComponent},
   {path:'alumnos',component:AlumnoTablaComponent},
   {path:'alumnos/agregar',component:AlumnoformComponent},
   {path:'alumnos/actualizar/:id',component:AlumnoformComponent}

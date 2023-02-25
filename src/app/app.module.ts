@@ -25,6 +25,7 @@ import { AlumnoTablaComponent } from './escuela/tablas/alumno-tabla/alumno-tabla
 import { AlumnoformComponent } from './escuela/forms/alumnoform/alumnoform.component';
 import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/cuatrimestre-tabla.component';
 import { CommonModule } from '@angular/common';
+import { CuatrimestreformComponent } from './escuela/forms/cuatrimestreform/cuatrimestreform.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CommonModule } from '@angular/common';
     AlumnoTablaComponent,
     AlumnoformComponent,
     CuatrimestreTablaComponent,
-    CuatrimestreTablaComponent
+    CuatrimestreTablaComponent,
+    CuatrimestreformComponent
   ],
   imports: [
     BrowserModule,

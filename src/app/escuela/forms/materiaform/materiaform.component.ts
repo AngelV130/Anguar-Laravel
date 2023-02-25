@@ -24,6 +24,7 @@ export class MateriaformComponent {
   this.params.params.subscribe(param=>{
     this.id = +param['id'];
   }).unsubscribe();
+  this.buscarMateria(this.id)
   console.log(this.buscarMateria(this.id));
   this.form=new FormGroup({
     nombre:new FormControl(''),
@@ -84,8 +85,10 @@ export class MateriaformComponent {
   return this.materiaSVC.buscar(id).subscribe(res=>{
     this.materia = res;
     console.log(this.materia);
-    this.form.value.nombre = this.materia.nombre;
-    this.form.value.unidad=this.materia.unidad;
+    this.form=new FormGroup({
+      nombre:new FormControl(this.materia.nombre),
+      unidad:new FormControl(this.materia.unidad)
+    })
   });
  }
 

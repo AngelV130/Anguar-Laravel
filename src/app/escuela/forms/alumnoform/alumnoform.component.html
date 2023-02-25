@@ -21,7 +21,7 @@
         <div class="form-floating mb-3">
             <select formControlName="cuatri_id" class="form-select" id="floatingSelect" aria-label="Floating label select example">
                 <option selected>Seleccioner un Cuatrimestre</option>
-                <option *ngFor="let cuatri as CUATRIMESTRES" value="{{cuatri.id}}">{{cuatri.num_cuatri}}</option>
+                <option *ngFor="let c of CUATRIMESTRES" value="{{c.id}}">{{c.num_cuatri}}</option>
             </select>
             <label for="floatingSelect">Cuatrimestre</label>
         </div>
@@ -29,5 +29,5 @@
         || form.get('ap_paterno')?.errors?.['required'] || form.get('ap_materno')?.errors?.['required']
         || form.get('correo')?.errors?.['required']"
         type="submit" class="btn btn-primary">Guardar</button>    
-    x</form>
+    </form>
 </div>

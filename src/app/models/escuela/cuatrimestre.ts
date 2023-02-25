@@ -1,10 +1,11 @@
 export interface Cuatrimestre{
     id?:number
     num_cuatri:number
-    periodo: Periodo
+    periodo: Periodo | string
 }
+
 export enum Periodo{
-    'en-abr', 
-    'my-agt',
-    'sept-dic'
+    EnAbr = 'en-abr', 
+    MyAgt = 'my-agt',
+    SeptDic = 'sept-dic'
 }

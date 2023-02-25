@@ -27,6 +27,7 @@ export class AlumnoformComponent implements OnInit {
     this.params.params.subscribe(params=>{
       this.id = +params['id']
     }).unsubscribe();
+    
     console.log(this.id)
     this.buscarAlumno(this.id);
     this.obtenerCuatrimestre();

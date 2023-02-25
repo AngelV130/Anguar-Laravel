@@ -30,7 +30,7 @@ export class ProfesorformComponent implements OnInit {
       ap_paterno: new FormControl('',Validators.required),
       ap_materno: new FormControl('',Validators.required),
       correo:new FormControl('',Validators.required),
-      materia:new FormControl('',Validators.required)
+      materia_id:new FormControl('',Validators.required)
   });
 }
 
@@ -65,7 +65,7 @@ export class ProfesorformComponent implements OnInit {
     console.log(this.profesor);
       return this.profesorSVC.actualizarProfesor(this.id,this.profesor).subscribe(res=>{
         this.form.reset();
-        this.rutas.navigate(['jugadores']);
+        this.rutas.navigate(['profesores']);
       },
       err => {
         if (err instanceof HttpErrorResponse) {
@@ -96,7 +96,7 @@ export class ProfesorformComponent implements OnInit {
           ap_paterno: new FormControl(this.profesor.ap_paterno,Validators.required),
           ap_materno: new FormControl(this.profesor.ap_materno,Validators.required),
           correo: new FormControl(this.profesor.correo,Validators.required),
-          materia: new FormControl(this.profesor.materia,Validators.required)
+          materia:new FormControl(this.profesor.materia_id,Validators.required)
         });
       }
     })

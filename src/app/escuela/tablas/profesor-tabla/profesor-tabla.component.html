@@ -17,12 +17,12 @@
                 <td>{{profesor.nombre}}</td>
                 <td>{{profesor.ap_paterno}} {{profesor.ap_materno}}</td>
                 <td>{{profesor.correo}}</td>
-                <td>{{profesor.materia}}</td>
+                <td>{{profesor.materia_id}}</td>
                 <td><a routerLink="./actualizar/{{profesor.id}}"  class="btn btn-outline-warning me-3">Modificar</a> 
-                    <button class="btn btn-outline-danger">Eliminar</button>
+                    <button (click)="eliminarProfesor(profesor.id)" class="btn btn-outline-danger">Eliminar</button>
                 </td>
             </tr>
         </tbody>
     </table>
-    <button routerLink="./agregar">agregar materia</button>
+    <button routerLink="./agregar" class="btn btn-outline-success">agregar materia</button>
 </div>
