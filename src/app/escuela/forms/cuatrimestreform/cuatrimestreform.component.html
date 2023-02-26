@@ -1,20 +1,19 @@
-
 <div class="container">
-    <h1 class="text-center mb-3">form Cuatri</h1>
-    <form action="">
+    <h1 class="text-center mb-3">form Cuatrimestre</h1>
+    <form [formGroup]="form" (submit)="(insertarCuatrimestre())">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="nombre">
-            <label for="floatingInput">Numero de Cuatri</label>
+            <input type="text" class="form-control" id="floatingInput" placeholder="nombre" formControlName="num_cuatri">
+            <label for="floatingInput">Numero de Cuatrimestre</label>
         </div>
         <div class="form-floating mb-3">
-            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-              <option selected>Seleccioner un Periodo</option>
-              <option value="1">en-abr</option>
-              <option value="2">my-agt</option>
-              <option value="3">sept-dic</option>
-            </select>
-            <label for="floatingSelect">Periodo</label>
+           <select formControlName="periodo" class="form-control">
+            <option selected>seleciona un periodo</option>
+            <option *ngFor="let p of opcionesPeriodo" value="{{p.valor}}">{{p.etiqueta}}</option>
+           </select>
+           <label for="floatingInput">Periodo</label>
         </div>
-        <button type="submit" class="btn btn-outline-success">Guardar</button>
+        <button type="submit" [disabled]="form.get('num_cuatri')?.errors?.['required'] || form.get('periodo')?.errors?.['required']" class="btn btn-outline-success">
+            Guardar
+        </button>
     </form>
 </div>

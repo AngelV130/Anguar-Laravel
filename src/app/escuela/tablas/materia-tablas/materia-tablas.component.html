@@ -10,13 +10,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let materia of materias">
+            <tr *ngFor="let materia of MATERIAS">
                 <td>{{materia.id}}</td>
                 <td>{{materia.nombre}}</td>
                 <td>{{materia.unidad}}</td>
                 <td>
-                    <a href="" class="btn btn-outline-warning me-3">Modificar</a>
-                    <a href="" class="btn btn-outline-danger">Eliminar</a>
+                    <a routerLink="./actualizar/{{materia.id}}" class="btn btn-outline-warning me-3">Modificar</a>
+                    <button (click)="eliminarMateria(materia.id)" *ngIf="materia.id !== undefined" class="btn btn-outline-danger">Eliminar</button>
                 </td>
             </tr>
         </tbody>

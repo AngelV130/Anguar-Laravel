@@ -1,32 +1,34 @@
 
 <div class="container">
     <h1 class="text-center mb-3">form Profesor</h1>
-    <form action="">
+    <form [formGroup]="form" (submit)="(insertarProfesor())">
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="nombre">
+            <input type="text" class="form-control" id="floatingInput" formControlName="nombre" placeholder="nombre">
             <label for="floatingInput">Nombre</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="appaterno">
+            <input type="text" class="form-control" id="floatingInput" 
+            formControlName="ap_paterno" placeholder="appaterno">
             <label for="floatingInput">Apellido Paterno</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="apmaterno">
+            <input type="text" class="form-control" id="floatingInput" formControlName="ap_materno" placeholder="apmaterno">
             <label for="floatingInput" class="">Apellido Materno</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="nombre">
+            <input type="text" class="form-control" id="floatingInput" placeholder="nombre" formControlName="correo">
             <label for="floatingInput">Correo</label>
         </div>
         <div class="form-floating mb-3">
-            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="materia_id">
               <option selected>Seleccioner un Materia</option>
-              <option value="1">Uno</option>
-              <option value="2">Dos</option>
-              <option value="3">Tres</option>
+              <option *ngFor="let materia of MATERIAS" value="{{materia.id}}">{{materia.nombre}}</option>
             </select>
             <label for="floatingSelect">Materias</label>
         </div>
-        <button type="submit" class="btn btn-outline-success">Guardar</button>
+        <button [disabled]="form.get('nombre')?.errors?.['required'] || form.get('materia')?.errors?.['required']
+        || form.get('ap_paterno')?.errors?.['required'] || form.get('ap_materno')?.errors?.['required']
+        || form.get('correo')?.errors?.['required'] " 
+        type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>

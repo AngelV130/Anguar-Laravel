@@ -25,6 +25,8 @@ import { AlumnoTablaComponent } from './escuela/tablas/alumno-tabla/alumno-tabla
 import { AlumnoformComponent } from './escuela/forms/alumnoform/alumnoform.component';
 import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/cuatrimestre-tabla.component';
 import { PruebaInterceptor } from './interceptor/prueba.interceptor';
+import { CommonModule } from '@angular/common';
+import { CuatrimestreformComponent } from './escuela/forms/cuatrimestreform/cuatrimestreform.component';
 
 @NgModule({
   declarations: [
@@ -48,13 +50,15 @@ import { PruebaInterceptor } from './interceptor/prueba.interceptor';
     AlumnoTablaComponent,
     AlumnoformComponent,
     CuatrimestreTablaComponent,
-    CuatrimestreTablaComponent
+    CuatrimestreTablaComponent,
+    CuatrimestreformComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: PruebaInterceptor, multi: true}
