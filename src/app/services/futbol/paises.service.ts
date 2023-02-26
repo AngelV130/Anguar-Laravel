@@ -9,7 +9,7 @@ import { Paises } from 'src/app/models/futbol/paises';
 export class PaisesService {
 
   constructor(private http: HttpClient) { }
-  private URL = 'http://192.168.100.180:8000/api';
+  private URL = 'http://127.0.0.1:8000/api';
 
   insertarPais(pais: Paises):Observable<Paises>{
     return this.http.post<Paises>(`${this.URL}/pais`,pais);

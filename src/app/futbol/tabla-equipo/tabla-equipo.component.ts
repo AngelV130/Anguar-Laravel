@@ -18,14 +18,18 @@ export class TablaEquipoComponent {
   constructor(private equipoSVC:EquipoService){}
 
   ngOnInit(): void {
-    this.obtenerPaises();
+    this.obtenerEquipo();
   }
-  obtenerPaises() {
+  obtenerEquipo() {
     return this.equipoSVC.obtenerEquipo().subscribe(res=>{
       this.EQUIPOS = res;
     })
   }
   eliminarEquipo(id:number){
-    
+    this.equipoSVC.eliminarEquipo(id).subscribe(res=>{
+      this.obtenerEquipo();
+      console.log("se elimino");
+      console.log(res);
+    })
   }
 }

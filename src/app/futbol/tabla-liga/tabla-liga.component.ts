@@ -18,14 +18,18 @@ export class TablaLigaComponent {
   constructor(private ligassSVC:LigaService){}
 
   ngOnInit(): void {
-    this.obtenerPaises();
+    this.obtenerLigas();
   }
-  obtenerPaises() {
+  obtenerLigas() {
     return this.ligassSVC.obtenerLigas().subscribe(res=>{
       this.LIGAS = res;
     })
   }
   eliminarLiga(id:number){
-    
+    this.ligassSVC.eliminarLiga(id).subscribe(res=>{
+      this.obtenerLigas();
+      console.log("se elimino");
+      console.log(res);
+    })    
   }
 }

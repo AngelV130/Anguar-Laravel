@@ -8,7 +8,7 @@ import { Equipo } from 'src/app/models/futbol/equipo';
 })
 export class EquipoService {
   constructor(private http: HttpClient) { }
-  private URL = 'http://192.168.100.180:8000/api';
+  private URL = 'http://127.0.0.1:8000/api';
 
   insertarEquipo(equipo: Equipo):Observable<Equipo>{
     return this.http.post<Equipo>(`${this.URL}/equipo`,equipo);

@@ -13,6 +13,7 @@
           placeholder="Escribe tu contraseña" formControlName="password" minlength="8">
             <p *ngIf="this.form.get('password')?.errors?.['serverError']">{{ this.form.get('password')?.errors?.['serverError'] }}</p>
         </div><br>
+        <p *ngIf="this.error">Porfavor active su cuenta</p>
         <button [disabled]="form.get('email')?.errors?.['required'] || form.get('password')?.errors?.['minlength']
                         || form.get('password')?.errors?.['required']" type="submit" class="btn btn-primary">Guardar</button>
       </form>

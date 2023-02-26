@@ -15,27 +15,38 @@ import { TablaLigaComponent } from './futbol/tabla-liga/tabla-liga.component';
 import { TablaPaisesComponent } from './futbol/tabla-paises/tabla-paises.component';
 import { IniciosesionFormularioComponent } from './iniciosesion-formulario/iniciosesion-formulario.component';
 import { RegistroFormularioComponent } from './registro-formulario/registro-formulario.component';
+import {AuthTokenGuard} from './guards/auth-token.guard';
+import { AuthRolGuard } from './guards/auth-rol.guard';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
-  {path: 'paises', component:TablaPaisesComponent},
-  {path: 'paises/formulario', component:FormularioPaisesComponent},
-  {path: 'paises/formulario/:id', component:FormularioPaisesComponent},
-  {path: 'ligas',component:TablaLigaComponent},
-  {path: 'ligas/formulario',component:FormularioLigaComponent},
-  {path: 'ligas/formulario/:id',component:FormularioLigaComponent},
-  {path: 'equipos',component:TablaEquipoComponent},
-  {path: 'equipos/formulario',component:FormularioEquipoComponent},
-  {path: 'equipos/formulario/:id',component:FormularioEquipoComponent},
-  {path: 'jugadores',component:TablaJugadorComponent},
-  {path: 'jugadores/formulario',component:FormularioJugadorComponent},
-  {path: 'jugadores/formulario/:id',component:FormularioJugadorComponent},
+  {path: '',component:NavbarComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2,3]}},
+  {path: 'paises', canActivate:[AuthRolGuard],data:{rol:[1,2,3]},component:TablaPaisesComponent},
+  {path: 'paises/formulario', component:FormularioPaisesComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+  {path: 'paises/formulario/:id', component:FormularioPaisesComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+  
+  {path: 'ligas',canActivate:[AuthRolGuard],data:{rol:[1,2,3]},component:TablaLigaComponent},
+  {path: 'ligas/formulario',component:FormularioLigaComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+  {path: 'ligas/formulario/:id',component:FormularioLigaComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+
+  {path: 'equipos',canActivate:[AuthRolGuard],data:{rol:[1,2,3]},component:TablaEquipoComponent},
+  {path: 'equipos/formulario',component:FormularioEquipoComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+  {path: 'equipos/formulario/:id',component:FormularioEquipoComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+
+  {path: 'jugadores',canActivate:[AuthRolGuard],data:{rol:[1,2,3]},component:TablaJugadorComponent},
+  {path: 'jugadores/formulario',component:FormularioJugadorComponent,canActivate:[AuthRolGuard],data:{rol:[1,2]}},
+  {path: 'jugadores/formulario/:id',component:FormularioJugadorComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+
   {path: 'logging', component:IniciosesionFormularioComponent},
   {path: 'registro', component:RegistroFormularioComponent},
+
   {path:'materias',component:MateriaTablasComponent},
   {path:'materias/agregar',component:MateriaformComponent},
   {path:'profesores',component:ProfesorTablaComponent},
   {path:'cuatrimestres',component:CuatrimestreTablaComponent},
-  {path:'alumnos',component:AlumnoTablaComponent}
+  {path:'alumnos',component:AlumnoTablaComponent},
+
+  {path: "**", pathMatch: 'full', redirectTo: ''}
 ]
 
 @NgModule({

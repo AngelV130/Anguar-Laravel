@@ -1,10 +1,10 @@
-<nav class="navbar bg-body-tertiary fixed-top">
+<nav class="navbar bg-info fixed-top">
     <div class="container-fluid">
-        <div class="row">
-            <button class="navbar-toggler col-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <div *ngIf="this.sesionIniciada; else id" class="row">
+            <button class="navbar-toggler col-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand col-4" routerLink="/paises">Offcanvas navbar</a>
+            <a class="navbar-brand col-4" routerLink="/">Practica Angular</a>
         </div>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
@@ -44,6 +44,8 @@
         </div>
     </div>
 </nav>
+<ng-template #id>
+    <a class="navbar-brand col-4" routerLink="/logging">Practica Angular</a></ng-template>
 <div class="container mt-5 pt-5">
     <router-outlet></router-outlet>
 </div>

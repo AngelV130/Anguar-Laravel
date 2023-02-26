@@ -6,7 +6,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TablaPaisesComponent } from './futbol/tabla-paises/tabla-paises.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormularioPaisesComponent } from './futbol/formulario-paises/formulario-paises.component';
 import { TablaLigaComponent } from './futbol/tabla-liga/tabla-liga.component';
 import { TablaEquipoComponent } from './futbol/tabla-equipo/tabla-equipo.component';
@@ -24,6 +24,7 @@ import { ProfesorformComponent } from './escuela/forms/profesorform/profesorform
 import { AlumnoTablaComponent } from './escuela/tablas/alumno-tabla/alumno-tabla.component';
 import { AlumnoformComponent } from './escuela/forms/alumnoform/alumnoform.component';
 import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/cuatrimestre-tabla.component';
+import { PruebaInterceptor } from './interceptor/prueba.interceptor';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,9 @@ import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: PruebaInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

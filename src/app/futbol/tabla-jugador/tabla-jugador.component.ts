@@ -22,14 +22,18 @@ export class TablaJugadorComponent {
   constructor(private JugadorSVC:JugadorService){}
 
   ngOnInit(): void {
-    this.obtenerPaises();
+    this.obtenerJugadores();
   }
-  obtenerPaises() {
+  obtenerJugadores() {
     return this.JugadorSVC.obtenerJugador().subscribe(res=>{
       this.JUGADORES = res;
     })
   }
   eliminarJugador(id:number){
-    
+    this.JugadorSVC.eliminarJugador(id).subscribe(res=>{
+      this.obtenerJugadores();
+      console.log("se elimino");
+      console.log(res);
+    })    
   }
 }

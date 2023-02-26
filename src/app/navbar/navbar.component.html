@@ -1,25 +1,21 @@
-<nav class="navbar bg-body-tertiary fixed-top">
+<div class="container">
+    <h1>MENU DE INICIO</h1>
     <div class="container-fluid">
-        <div class="row">
-            <button class="navbar-toggler col-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand col-4" href="#">Offcanvas navbar</a>
-        </div>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-               
-            </ul>
-            <form class="d-flex mt-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            </div>
-        </div>
+        <h3>Futbol:</h3>  
+        <ul class="list-group">
+            <li class="list-group-item" aria-current="true"><a class="dropdown-item" href="/paises">Paises</a></li>
+            <li class="list-group-item"><a class="dropdown-item" href="/ligas">Ligas</a></li>
+            <li class="list-group-item"><a class="dropdown-item" href="/equipos">Equipos</a></li>
+            <li class="list-group-item"><a class="dropdown-item" href="/jugadores">jugadores</a></li>
+        </ul>
     </div>
-  </nav>
+    <div class="container-fluid">
+        <h3>Escuela:</h3>  
+        <ul class="list-group">
+            <li class="list-group-item"><a class="dropdown-item" href="/materias">Materias</a></li>
+            <li class="list-group-item"><a class="dropdown-item" href="/profesores">Profesores</a></li>
+            <li class="list-group-item"><a class="dropdown-item" href="/cuatrimestres">Cuatrimestre</a></li>
+            <li class="list-group-item"><a class="dropdown-item" href="/alumnos">Alumno</a></li>
+        </ul>
+    </div>
+</div>

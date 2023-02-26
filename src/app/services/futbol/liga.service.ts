@@ -9,7 +9,7 @@ import { Ligas } from 'src/app/models/futbol/ligas';
 export class LigaService {
 
   constructor(private http: HttpClient) { }
-  private URL = 'http://192.168.100.180:8000/api';
+  private URL = 'http://127.0.0.1:8000/api';
 
   insertarLiga(liga: Ligas):Observable<Ligas>{
     return this.http.post<Ligas>(`${this.URL}/liga`,liga);
