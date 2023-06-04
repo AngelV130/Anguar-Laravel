@@ -21,43 +21,57 @@ import { RegistroFormularioComponent } from './registro-formulario/registro-form
 import {AuthTokenGuard} from './guards/auth-token.guard';
 import { AuthRolGuard } from './guards/auth-rol.guard';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ValidarCodigoComponent } from './validar-codigo/validar-codigo.component';
+import { UsuariosFormComponent } from './usuarios-form/usuarios-form.component';
+import { UsuariosTablaComponent } from './usuarios-tabla/usuarios-tabla.component';
+import { TablaPaisSseComponent } from './futbol/tabla-pais-sse/tabla-pais-sse.component';
+import { BarcoComponent } from './Juego/barco/barco.component';
+import { BatallaNavalComponent } from './Juego/batalla-naval/batalla-naval.component';
 
 const routes: Routes = [
   {path: '',component:NavbarComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2,3]}},
-  {path: 'paises', canActivate:[AuthRolGuard],data:{rol:[1,2,3]},component:TablaPaisesComponent},
-  {path: 'paises/formulario', component:FormularioPaisesComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
-  {path: 'paises/formulario/:id', component:FormularioPaisesComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+
+  {path: 'paises', canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1,2,3]},component:TablaPaisSseComponent},
+  {path: 'paises/formulario', component:FormularioPaisesComponent,canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1,2]}},
+  {path: 'paises/formulario/:id', component:FormularioPaisesComponent,canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1]}},
   
-  {path: 'ligas',canActivate:[AuthRolGuard],data:{rol:[1,2,3]},component:TablaLigaComponent},
-  {path: 'ligas/formulario',component:FormularioLigaComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
-  {path: 'ligas/formulario/:id',component:FormularioLigaComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+  {path: 'ligas',canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1,2,3]},component:TablaLigaComponent},
+  {path: 'ligas/formulario',component:FormularioLigaComponent,canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1,2]}},
+  {path: 'ligas/formulario/:id',component:FormularioLigaComponent,canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1]}},
 
-  {path: 'equipos',canActivate:[AuthRolGuard],data:{rol:[1,2,3]},component:TablaEquipoComponent},
-  {path: 'equipos/formulario',component:FormularioEquipoComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
-  {path: 'equipos/formulario/:id',component:FormularioEquipoComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+  {path: 'equipos',canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1,2,3]},component:TablaEquipoComponent},
+  {path: 'equipos/formulario',component:FormularioEquipoComponent,canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1,2]}},
+  {path: 'equipos/formulario/:id',component:FormularioEquipoComponent,canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1]}},
 
-  {path: 'jugadores',canActivate:[AuthRolGuard],data:{rol:[1,2,3]},component:TablaJugadorComponent},
-  {path: 'jugadores/formulario',component:FormularioJugadorComponent,canActivate:[AuthRolGuard],data:{rol:[1,2]}},
-  {path: 'jugadores/formulario/:id',component:FormularioJugadorComponent,canActivate:[AuthRolGuard],data:{rol:[1]}},
+  {path: 'jugadores',canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1,2,3]},component:TablaJugadorComponent},
+  {path: 'jugadores/formulario',component:FormularioJugadorComponent,canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1,2]}},
+  {path: 'jugadores/formulario/:id',component:FormularioJugadorComponent,canActivate:[AuthRolGuard,AuthTokenGuard],data:{rol:[1]}},
 
   {path: 'logging', component:IniciosesionFormularioComponent},
   {path: 'registro', component:RegistroFormularioComponent},
+  {path: 'verificar/:id',component:ValidarCodigoComponent},
+  {path: 'usuarios/:id',component:UsuariosFormComponent,data:{rol:[1]},canActivate:[AuthRolGuard,AuthTokenGuard]},
+  {path: 'usuarios',component:UsuariosTablaComponent,data:{rol:[1]},canActivate:[AuthRolGuard,AuthTokenGuard]},
+  
+  {path:'materias',component:MateriaTablasComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2,3]}},
+  {path:'materias/agregar',component:MateriaformComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2]}},
+  {path:'materias/actualizar/:id',component:MateriaformComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1]}},
 
-  {path:'materias',component:MateriaTablasComponent},
-  {path:'materias/agregar',component:MateriaformComponent},
-  {path:'materias/actualizar/:id',component:MateriaformComponent},
-  {path:'profesores',component:ProfesorTablaComponent},
-  {path:'profesores/agregar',component:ProfesorformComponent},
-  {path:'profesores/actualizar/:id',component:ProfesorformComponent},
-  {path:'cuatrimestres',component:CuatrimestreTablaComponent},
-  {path:'alumnos',component:AlumnoTablaComponent},
-  {path:'cuatrimestres/agregar',component:CuatrimestreformComponent},
-  {path:'cuatrimestres/actualizar/:id',component:CuatrimestreformComponent},
-  {path:'alumnos',component:AlumnoTablaComponent},
-  {path:'alumnos/agregar',component:AlumnoformComponent},
-  {path:'alumnos/actualizar/:id',component:AlumnoformComponent},
+  {path:'profesores',component:ProfesorTablaComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2,3]}},
+  {path:'profesores/agregar',component:ProfesorformComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2]}},
+  {path:'profesores/actualizar/:id',component:ProfesorformComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1]}},
 
+  {path:'cuatrimestres',component:CuatrimestreTablaComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2,3]}},
+  {path:'cuatrimestres/agregar',component:CuatrimestreformComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2]}},
+  {path:'cuatrimestres/actualizar/:id',component:CuatrimestreformComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1]}},
 
+  {path:'alumnos',component:AlumnoTablaComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2,3]}},
+  {path:'alumnos/agregar',component:AlumnoformComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2]}},
+  {path:'alumnos/actualizar/:id',component:AlumnoformComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1]}},
+
+  {path:'barco',component:BarcoComponent},
+  {path:'batalla',component:BatallaNavalComponent},
+  {path:'paises/sse',component:TablaPaisesComponent,canActivate:[AuthTokenGuard,AuthRolGuard],data:{rol:[1,2,3]}},
   {path: "**", pathMatch: 'full', redirectTo: ''}
 ]
 

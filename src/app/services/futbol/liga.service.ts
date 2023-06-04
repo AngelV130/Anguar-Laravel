@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Ligas } from 'src/app/models/futbol/ligas';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Ligas } from 'src/app/models/futbol/ligas';
 export class LigaService {
 
   constructor(private http: HttpClient) { }
-  private URL = 'http://127.0.0.1:8000/api';
+  private URL = environment.apiBaseUrl;
 
   insertarLiga(liga: Ligas):Observable<Ligas>{
     return this.http.post<Ligas>(`${this.URL}/liga`,liga);

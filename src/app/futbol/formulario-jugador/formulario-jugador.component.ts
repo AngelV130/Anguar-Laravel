@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Equipo } from 'src/app/models/futbol/equipo';
 import { Jugador } from 'src/app/models/futbol/jugador';
 import { Paises } from 'src/app/models/futbol/paises';
@@ -15,18 +16,21 @@ import { PaisesService } from 'src/app/services/futbol/paises.service';
   styleUrls: ['./formulario-jugador.component.css']
 })
 export class FormularioJugadorComponent implements OnInit{
-  constructor(private paisesSVC:PaisesService,private equiposSVC:EquipoService,private jugadoresSVC:JugadorService,private rutas:Router,private params:ActivatedRoute){}
+  constructor(private paisesSVC:PaisesService,private equiposSVC:EquipoService,private jugadoresSVC:JugadorService,private rutas:Router,private params:ActivatedRoute,private cookies:CookieService){}
   EQUIPOS!:Equipo[];
   PAISES!:Paises[];
   id!:number;
+  public error!:String;
   public form!:FormGroup;
   public jugador!:Jugador;
   ngOnInit(): void {
     this.params.params.subscribe(param=>{
       this.id = +param['id'];
     }).unsubscribe();
-    console.log(this.id)
-    this.buscarJugador(this.id);
+    if(!Number.isNaN(this.id)){      
+      console.log(this.id)
+      this.buscarJugador(this.id);
+    }
     this.obtenerPaises();
     this.obtenerEquipos();
     this.form = new FormGroup({
@@ -63,6 +67,17 @@ export class FormularioJugadorComponent implements OnInit{
               }
             });
           }
+          if (err.status === 401){
+            this.error = err.error;
+            alert(this.error)
+            this.cookies.deleteAll();
+            this.rutas.navigate(['logging'])
+          }
+          if (err.status === 403){
+            this.error = err.error;
+            alert(this.error)
+            this.rutas.navigate([''])
+          }
         }
       }
       );
@@ -87,6 +102,17 @@ export class FormularioJugadorComponent implements OnInit{
                 });
               }
             });
+          }
+          if (err.status === 401){
+            this.error = err.error;
+            alert(this.error)
+            this.cookies.deleteAll();
+            this.rutas.navigate(['logging'])
+          }
+          if (err.status === 403){
+            this.error = err.error;
+            alert(this.error)
+            this.rutas.navigate([''])
           }
         }
       });

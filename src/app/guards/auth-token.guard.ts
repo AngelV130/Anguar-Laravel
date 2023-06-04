@@ -14,7 +14,12 @@ export class AuthTokenGuard implements CanActivate {
      
       return this.registroSVC.getUser().pipe(
       map(
-        (res) => true
+        (res) => { 
+          if(res.status == true){
+            return true}
+            this.router.navigate(['logging']);
+            return false;
+        }
       ),
       catchError(async (err) => {
           this.router.navigate(['logging']);

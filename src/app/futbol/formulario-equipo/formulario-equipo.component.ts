@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Equipo } from 'src/app/models/futbol/equipo';
 import { Ligas } from 'src/app/models/futbol/ligas';
 import { EquipoService } from 'src/app/services/futbol/equipo.service';
@@ -13,17 +14,20 @@ import { LigaService } from 'src/app/services/futbol/liga.service';
   styleUrls: ['./formulario-equipo.component.css']
 })
 export class FormularioEquipoComponent implements OnInit {
-  constructor (private ligaSVC:LigaService,private equipoSVC:EquipoService,private rutas:Router,private params:ActivatedRoute){}
+  constructor (private ligaSVC:LigaService,private equipoSVC:EquipoService,private rutas:Router,private params:ActivatedRoute,private cookies:CookieService){}
   LIGAS!:Ligas[];
   id!:number;
+  public error!:String;
   public form!: FormGroup;
   public equipo!:Equipo;
   ngOnInit(): void {
     this.params.params.subscribe(param=>{
       this.id = +param['id'];
     }).unsubscribe();
-    console.log(this.id)
-    this.buscarEquipo(this.id);
+    if(!Number.isNaN(this.id)){
+      console.log(this.id);
+      this.buscarEquipo(this.id);
+    }
     this.obtenerLigas();
     this.form = new FormGroup({
       nombre: new FormControl('',Validators.required),
@@ -54,6 +58,17 @@ export class FormularioEquipoComponent implements OnInit {
               }
             });
           }
+          if (err.status === 401){
+            this.error = err.error;
+            alert(this.error)
+            this.cookies.deleteAll();
+            this.rutas.navigate(['logging'])
+          }
+          if (err.status === 403){
+            this.error = err.error;
+            alert(this.error)
+            this.rutas.navigate([''])
+          }
         }
       }
       );
@@ -78,6 +93,17 @@ export class FormularioEquipoComponent implements OnInit {
                 });
               }
             });
+          }
+          if (err.status === 401){
+            this.error = err.error;
+            alert(this.error)
+            this.cookies.deleteAll();
+            this.rutas.navigate(['logging'])
+          }
+          if (err.status === 403){
+            this.error = err.error;
+            alert(this.error)
+            this.rutas.navigate([''])
           }
         }
       }

@@ -27,6 +27,15 @@ import { CuatrimestreTablaComponent } from './escuela/tablas/cuatrimestre-tabla/
 import { PruebaInterceptor } from './interceptor/prueba.interceptor';
 import { CommonModule } from '@angular/common';
 import { CuatrimestreformComponent } from './escuela/forms/cuatrimestreform/cuatrimestreform.component';
+import { ValidarCodigoComponent } from './validar-codigo/validar-codigo.component';
+import { NavegacionComponent } from './navegacion/navegacion.component';
+import { UsuariosTablaComponent } from './usuarios-tabla/usuarios-tabla.component';
+import { UsuariosFormComponent } from './usuarios-form/usuarios-form.component';
+import { TablaPaisSseComponent } from './futbol/tabla-pais-sse/tabla-pais-sse.component';
+import { BarcoComponent } from './Juego/barco/barco.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BatallaNavalComponent } from './Juego/batalla-naval/batalla-naval.component';
+import { BatallaNavalViewComponent } from './Juego/batalla-naval-view/batalla-naval-view.component';
 
 @NgModule({
   declarations: [
@@ -51,14 +60,23 @@ import { CuatrimestreformComponent } from './escuela/forms/cuatrimestreform/cuat
     AlumnoformComponent,
     CuatrimestreTablaComponent,
     CuatrimestreTablaComponent,
-    CuatrimestreformComponent
+    CuatrimestreformComponent,
+    ValidarCodigoComponent,
+    NavegacionComponent,
+    UsuariosTablaComponent,
+    UsuariosFormComponent,
+    TablaPaisSseComponent,
+    BarcoComponent,
+    BatallaNavalComponent,
+    BatallaNavalViewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: PruebaInterceptor, multi: true}

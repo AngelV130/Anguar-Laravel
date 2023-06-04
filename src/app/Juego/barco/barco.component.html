@@ -1,0 +1,44 @@
+<div class="div2">
+    <img *ngIf="true" src="https://static.vecteezy.com/system/resources/previews/015/757/170/original/sailing-boat-cartoon-icon-illustration-water-transportation-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg" [@animacionImagen]="estadoActual" (click)="cambiarEstado()"
+    id="idDelElemento">
+</div>
+<br><br><br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <h3 >Monitor: 4</h3>
+      <form *ngIf="false" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label>
+          Monitor:
+          <select formControlName="ventana">
+            <option *ngIf="this.v1" value="ventana1">Ventana 1</option>
+            <option *ngIf="this.v2" value="ventana2">Ventana 2</option>
+            <option *ngIf="this.v3" value="ventana3">Ventana 3</option>
+          </select>
+        </label>
+        <button class="btn btn-success" type="submit" [disabled]="this.form.get('ventana')?.errors">Entrar</button>
+      </form>
+      <br><br>
+      <button class="btn btn-success" (click)="ejemplo()">salir</button><br><br>
+    </div>
+    <div class="col-md-2 text-raight">
+      <button class="btn btn-success" (click)="iniciarJuego()">Crear</button>
+    </div>
+    <div class="col-md-5"> 
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Partidas</th>
+            <th>Opcion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let partida of partidas">
+            <td>Partida {{ partida.id}}</td>
+            <td><button (click)="buscarPartidas(partida.id)">Unirse</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

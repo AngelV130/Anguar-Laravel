@@ -1,16 +1,16 @@
+<app-navegacion></app-navegacion>
 <div class="container">
     <h1 class="text-center mb-3">form Materia</h1>
     <form [formGroup]="form" (submit)="(insertarMateria())">
         <div class="form-floating mb-3">
-            <input type="text" formControlName="nombre"  class="form-control" id="floatingInput" placeholder="nombre" value="{{materia.nombre}}">
+            <input type="text" formControlName="nombre"  class="form-control" id="floatingInput" placeholder="nombre">
             <label for="floatingInput">Nombre</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" formControlName="unidad" class="form-control" id="floatingInput" placeholder="appaterno" value="{{materia.unidad
-            }}">
+            <input type="text" formControlName="unidades" class="form-control" id="floatingInput" placeholder="appaterno">
             <label for="floatingInput">unidades</label>
         </div>
-        <button type="submit" [disabled]="form.get('nombre')?.errors?.['required'] || form.get('unidad')?.errors?.['required']" class="btn btn-outline-success">
+        <button type="submit" [disabled]="form.get('nombre')?.errors?.['required'] || form.get('unidades')?.errors?.['required']" class="btn btn-outline-success">
             Guardar
         </button>
     </form>

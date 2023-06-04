@@ -6,6 +6,7 @@ import { materias } from 'src/app/models/escuela/materias';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Profesor } from 'src/app/models/escuela/profesor';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-profesorform',
@@ -13,17 +14,20 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./profesorform.component.css']
 })
 export class ProfesorformComponent implements OnInit {
-  constructor(private profesorSVC:ProfesorService,private materiaSVC:MateriaService,private rutas:Router,private params:ActivatedRoute){}
+  constructor(private profesorSVC:ProfesorService,private materiaSVC:MateriaService,private rutas:Router,private params:ActivatedRoute,private cookies:CookieService){}
   MATERIAS!:materias[];
   id!:number;
   public form!:FormGroup;
   public profesor!:Profesor;
+  public error!:String;
   ngOnInit(): void {
     this.params.params.subscribe(param=>{
       this.id = +param['id'];
     });
-    console.log(this.id)
-    this.buscarProfesor(this.id);
+    if(!Number.isNaN(this.id)){
+      console.log(this.id)
+      this.buscarProfesor(this.id);
+    }
     this.obtenerMaterias();
     this.form = new FormGroup({
       nombre:new FormControl('',Validators.required),
@@ -57,6 +61,17 @@ export class ProfesorformComponent implements OnInit {
               }
             });
           }
+          if (err.status === 401){
+            this.error = err.error;
+            alert(this.error)
+            this.cookies.deleteAll();
+            this.rutas.navigate(['logging'])
+          }
+          if (err.status === 403){
+            this.error = err.error;
+            alert(this.error)
+            this.rutas.navigate([''])
+          }
         }
       }
       );
@@ -82,6 +97,17 @@ export class ProfesorformComponent implements OnInit {
               }
             });
           }
+          if (err.status === 401){
+            this.error = err.error;
+            alert(this.error)
+            this.cookies.deleteAll();
+            this.rutas.navigate(['logging'])
+          }
+          if (err.status === 403){
+            this.error = err.error;
+            alert(this.error)
+            this.rutas.navigate([''])
+          }
         }
       });
   }
@@ -90,13 +116,13 @@ export class ProfesorformComponent implements OnInit {
     this.profesorSVC.buscar(id).subscribe(res=>{
       if(!Number.isNaN(this.id)){
         this.profesor = res;
-        console.log("hola")
+        console.log(this.profesor.materia_id)
         console.log(this.profesor);this.form = new FormGroup({          
           nombre: new FormControl(this.profesor.nombre,Validators.required),
           ap_paterno: new FormControl(this.profesor.ap_paterno,Validators.required),
           ap_materno: new FormControl(this.profesor.ap_materno,Validators.required),
           correo: new FormControl(this.profesor.correo,Validators.required),
-          materia:new FormControl(this.profesor.materia_id,Validators.required)
+          materia_id:new FormControl(this.profesor.materia_id,Validators.required)
         });
       }
     })

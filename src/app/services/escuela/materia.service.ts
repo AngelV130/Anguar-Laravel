@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { materias } from 'src/app/models/escuela/materias';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MateriaService {
-  API="http://127.0.0.1:8000/api"
+  API=environment.apiBaseUrl;
 
   constructor(private http:HttpClient) { }
 

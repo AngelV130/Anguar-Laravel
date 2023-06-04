@@ -1,9 +1,19 @@
 <div class="container">
+    <app-navegacion></app-navegacion>
+</div><br><br>
+<div class="container">
     <h1>MENU DE INICIO</h1>
+    <div *ngIf="this.isAdmin" class="container-fluid mb-3">
+        <h3>Admin:</h3>  
+        <ul class="list-group">
+            <li class="list-group-item"><a class="dropdown-item" href="/usuarios">Usuarios</a></li>
+        </ul>
+    </div>
     <div class="container-fluid">
         <h3>Futbol:</h3>  
         <ul class="list-group">
             <li class="list-group-item" aria-current="true"><a class="dropdown-item" href="/paises">Paises</a></li>
+            <li class="list-group-item" aria-current="true"><a class="dropdown-item" href="/paises/sse">Paises SSE</a></li>
             <li class="list-group-item"><a class="dropdown-item" href="/ligas">Ligas</a></li>
             <li class="list-group-item"><a class="dropdown-item" href="/equipos">Equipos</a></li>
             <li class="list-group-item"><a class="dropdown-item" href="/jugadores">jugadores</a></li>

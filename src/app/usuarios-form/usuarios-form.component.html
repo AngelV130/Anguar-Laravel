@@ -1,0 +1,26 @@
+<app-navegacion></app-navegacion>
+  <div class="container col-8 shadow-lg p-3 mb-5 bg-body rounded">
+      <h3 class="d-flex justify-content-center">Usuario</h3>
+      <form [formGroup]="form" (submit)="(actualizaUsuario())">
+          <div class="mb-3 mt-3">
+            <label for="nombre" class="form-label">Nombre de Usuario:</label>
+            <input type="text" class="form-control" id="nombre" 
+            placeholder="Escribe el nombre de usuario" formControlName="name" >
+            <p *ngIf="this.form.get('name')?.errors?.['serverError']">{{ this.form.get('name')?.errors?.['serverError'] }}</p>
+          </div>
+          <div class="mb-3">
+            <label for="pwd" class="form-label">Rol:</label>
+            <select class="form-select" aria-label="multiple select example" formControlName="rol_id">
+              <option  *ngFor="let rol of ROLES" value="{{ rol.id }}">{{ rol.nombre }}</option>
+            </select>
+          </div><br>
+          <div class="mb-3">
+            <label for="pwd" class="form-label">Status:</label>
+            <select class="form-select" aria-label="multiple select example" formControlName="status">
+               <option value="1">Activo</option>
+               <option value="0">Inactivo</option>
+            </select>
+          </div><br>
+          <button [disabled]="form.get('name')?.errors?.['required']" type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>

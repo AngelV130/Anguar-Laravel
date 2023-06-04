@@ -1,10 +1,11 @@
+<app-navegacion></app-navegacion>
 <table class="table">
     <thead>
       <tr>
         <th *ngFor="let columna of columnas">{{ columna.titulo }}</th>
         <th colspan="3">      
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a class="btn btn-outline-secondary me-md-4 col-4" routerLink="/jugadores/formulario">
+            <a *ngIf="usuario || autenticado" class="btn btn-outline-secondary me-md-4 col-4" routerLink="/jugadores/formulario">
               <i class="bi bi-plus-square-fill"></i> Agregar
             </a>
           </div>
@@ -20,9 +21,8 @@
         <td>{{ jugador.edad }}</td>
         <td>{{ jugador.pais }}</td>
         <td>{{ jugador.equipo }}</td>
-        <td><button routerLink="/jugadores/formulario/{{ jugador.id }}"><i class="bi bi-pencil-square"> Editar</i></button></td>
-        <td><button (click)="eliminarJugador(jugador.id)"><i class="bi bi-trash3-fill"> Eliminar</i></button></td>
-        <td><i class="bi bi-eye-fill"></i> Ver</td>
+        <td *ngIf="this.autenticado"><button routerLink="/jugadores/formulario/{{ jugador.id }}"><i class="bi bi-pencil-square"> Editar</i></button></td>
+        <td *ngIf="this.autenticado"><button (click)="eliminarJugador(jugador.id)"><i class="bi bi-trash3-fill"> Eliminar</i></button></td>
       </tr>
     </tbody>
 </table>

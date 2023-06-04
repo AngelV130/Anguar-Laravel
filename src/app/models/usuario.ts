@@ -1,8 +1,10 @@
 export interface Usuario {
-    emai: String,
+    id:number,
+    email: String,
     password: String,
     name: String,
     telefono: String,
-    rol_id: number,
-    access_token: String
+    rol_id: number | String,
+    token: String,
+    status: boolean,
 }

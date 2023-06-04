@@ -16,7 +16,7 @@ export class IniciosesionFormularioComponent implements OnInit{
   constructor(private registroSVC:RegistroService,private cookiesSVC:CookieService,private rutas:Router){}
   public usuario!:Usuario;
   public form!:FormGroup;
-  public error:boolean = false;
+  public error!:String;
   ngOnInit(): void {
     this.form = new FormGroup({
       email: new FormControl('',Validators.required),
@@ -27,15 +27,18 @@ export class IniciosesionFormularioComponent implements OnInit{
 
   mandarDatos(){
     this.usuario = this.form.value;
+    console.log(this.usuario)
     this.registroSVC.iniciarSesion(this.usuario).subscribe(res=>{
-      this.error = false;
-      this.cookiesSVC.set("ACCESS_TOKEN",res.access_token.toString())
+      console.log(res)
+      this.cookiesSVC.set("ACCESS_TOKEN",res.token.toString())
       console.log(this.cookiesSVC.get("ACCESS_TOKEN"));
-      this.rutas.navigate([''])
+      this.registroSVC.login = true;
+      this.rutas.navigate(['batalla'])
     },err=>{
+      console.log(err)
       if (err instanceof HttpErrorResponse) {
         if(err.status === 401){
-          this.error = true;
+          this.error = err.error;
         }
         if (err.status === 400) {
           // TODO: extract errors here and match onto the form
@@ -53,6 +56,9 @@ export class IniciosesionFormularioComponent implements OnInit{
         }
       }
     })
+  }
+  mandarRegistro(){
+    this.rutas.navigate(['registro']);
   }
 }
 

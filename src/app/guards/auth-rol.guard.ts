@@ -15,6 +15,11 @@ export class AuthRolGuard implements CanActivate {
       return this.registroSVC.getUser().pipe(
         map((res)=>{
           if(route.data['rol'].includes(res.rol_id)){
+            if(res.rol_id == 1){
+              this.registroSVC.autorizado = true;
+            }else if(res.rol_id == 2){
+              this.registroSVC.usuario = true
+            }
             return true
           }
           alert("No Tienes Permisos");

@@ -1,3 +1,10 @@
+<nav class="navbar bg-info fixed-top">
+  <div  class="container-fluid">
+      <div class="row">
+          <a class="navbar-brand col-4" routerLink="/registro">Practica Angular</a>
+      </div>
+  </div>
+</nav>
 <div class="container col-8 shadow-lg p-3 mb-5 bg-body rounded">
     <h3 class="d-flex justify-content-center">Iniciar Sesion</h3>
     <form [formGroup]="form" (submit)="(mandarDatos())">
@@ -13,8 +20,9 @@
           placeholder="Escribe tu contraseña" formControlName="password" minlength="8">
             <p *ngIf="this.form.get('password')?.errors?.['serverError']">{{ this.form.get('password')?.errors?.['serverError'] }}</p>
         </div><br>
-        <p *ngIf="this.error">Porfavor active su cuenta</p>
+        <p *ngIf="this.error != null">{{ this.error }}</p>
         <button [disabled]="form.get('email')?.errors?.['required'] || form.get('password')?.errors?.['minlength']
                         || form.get('password')?.errors?.['required']" type="submit" class="btn btn-primary">Guardar</button>
       </form>
+      <a class="link" (click)="mandarRegistro()">No tienes cuenta Registrar</a>
 </div>

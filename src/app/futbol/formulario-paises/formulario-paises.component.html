@@ -1,17 +1,13 @@
-<form class="row g-3" [formGroup]="form">
-    <div class="col-auto">
-      <label for="inputPassword2" class="visually-hidden">Nombre del Pais</label>
-      <input formControlName="nombre" type="text" class="form-control" id="inputPassword2" 
-      placeholder="Nombre del Pais" required value="{{ pais.nombre }}">
-      <div class="" *ngIf="form.get('nombre')?.errors?.['serverError']">
-        {{ form.get('nombre')?.errors?.['serverError'] }}
-      </div>
-      <div class="" *ngIf="!form.get('nombre')?.errors?.['required']">
-        campo requerido
-      </div>
+<app-navegacion></app-navegacion>
+<div class="container col-8 shadow-lg p-3 mb-5 bg-body rounded">
+  <h3 class="d-flex justify-content-center">Formulario Pais</h3>
+  <form [formGroup]="form" (submit)="insertarPais()">
+    <div class="mb-3 mt-3">
+      <label class="form-label">Nombre del pais:</label>
+      <input type="text" class="form-control" 
+      placeholder="Escribe el nombre" formControlName="nombre" >
     </div>
-    <div class="col-auto">
-      <button *ngIf="form.value.nombre == null" class="btn btn-primary mb-3" (click)="insertarPais()">Guardar</button>
-      <button *ngIf="form.value.nombre != null" class="btn btn-primary mb-3" (click)="actualizarPais()">Actualizar</button>
-    </div>
-</form>
+    <p *ngIf="form.get('nombre')?.errors?.['serverError']">{{ form.get('nombre')?.errors?.['serverError'] }}</p>
+    <button [disabled]="form.get('nombre')?.errors?.['required']" type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</div>

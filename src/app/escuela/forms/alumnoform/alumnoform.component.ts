@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Alumno } from 'src/app/models/escuela/alumno';
 import { Cuatrimestre } from 'src/app/models/escuela/cuatrimestre';
 import { AlumnoService } from 'src/app/services/escuela/alumno.service';
@@ -17,8 +18,10 @@ export class AlumnoformComponent implements OnInit {
     private cuatrimestreSVC:CuatrimestreService,
     private alumnoSVC:AlumnoService,
     private rutas:Router,
-    private params:ActivatedRoute
+    private params:ActivatedRoute,
+    private cookies:CookieService
     ){}
+    public error!:String;
     CUATRIMESTRES!:Cuatrimestre[];
     id!:number;
     public form!:FormGroup;
@@ -27,9 +30,10 @@ export class AlumnoformComponent implements OnInit {
     this.params.params.subscribe(params=>{
       this.id = +params['id']
     }).unsubscribe();
-    
     console.log(this.id)
-    this.buscarAlumno(this.id);
+    if(!Number.isNaN(this.id)){
+      this.buscarAlumno(this.id);
+    }
     this.obtenerCuatrimestre();
     this.form=new FormGroup({
       nombre:new FormControl('',Validators.required),
@@ -64,6 +68,17 @@ export class AlumnoformComponent implements OnInit {
             });
           }
         }
+        if (err.status === 401){
+          this.error = err.error;
+          alert(this.error)
+          this.cookies.deleteAll();
+          this.rutas.navigate(['logging'])
+        }
+        if (err.status === 403){
+          this.error = err.error;
+          alert(this.error)
+          this.rutas.navigate([''])
+        }
       }
       )
     }
@@ -87,6 +102,17 @@ export class AlumnoformComponent implements OnInit {
                 });
               }
             });
+          }
+          if (err.status === 401){
+            this.error = err.error;
+            alert(this.error)
+            this.cookies.deleteAll();
+            this.rutas.navigate(['logging'])
+          }
+          if (err.status === 403){
+            this.error = err.error;
+            alert(this.error)
+            this.rutas.navigate([''])
           }
         }
       }

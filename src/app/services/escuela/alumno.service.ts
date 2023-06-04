@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Alumno } from 'src/app/models/escuela/alumno';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnoService {
-  API="http://127.0.0.1:8000/api"
+  API=environment.apiBaseUrl;
 
   constructor(private http:HttpClient) { }
   insertarAlumno(alumno:Alumno):Observable<Alumno>{

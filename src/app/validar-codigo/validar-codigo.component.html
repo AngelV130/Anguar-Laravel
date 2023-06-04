@@ -1,0 +1,14 @@
+<div class="container col-8 shadow-lg p-3 mb-5 bg-body rounded">
+    <h2 class="d-flex justify-content-center">Validar Codigo</h2>
+    <small><b>Ingrese el codigo que llego a su telefono al activar su correo</b></small>
+    <form [formGroup]="form" (submit)="(enviarCodigo())">
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Codigo:</label>
+          <input type="text" class="form-control" id="email" 
+          placeholder="Escribe el codigo" formControlName="code" >
+        </div>
+        <p *ngIf="this.form.get('code')?.errors?.['serverError']">{{ this.form.get('code')?.errors?.['serverError'] }}</p>
+        <button [disabled]="form.get('code')?.errors?.['required'] || form.get('code')?.errors?.['min']" class="btn btn-primary">Guardar</button>
+      </form>
+      <p *ngIf="error">{{ this.error }}</p>
+</div>
